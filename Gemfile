@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'devise'
 gem 'slim-rails'
 
 group :doc do
