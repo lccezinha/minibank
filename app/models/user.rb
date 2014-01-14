@@ -3,4 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :name
+  validates_presence_of :cpf
+  validates_uniqueness_of :cpf
+  validates_format_of :cpf, with: /\A\d{11}\z/
+
 end
