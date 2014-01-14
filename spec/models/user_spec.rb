@@ -3,6 +3,12 @@ require 'spec_helper'
 describe User do
 
   context 'validations' do
+    let(:invalid_format_emails) do
+      ['_emai@email.com', 'dayvtonalmeida@2014@gmail.com', 'mlisi@bol.com,',
+        'julinha\\-laís@hotmail.com', 'neusa@agenciaweb,com.br',
+        'adcultura@yahoo,com.br', 'lopesmarinho2009@@hotmail.com',
+        'venturalu@hotmail.com .br', 'zaelzabalbino@hotmail.co,']
+    end
 
     context 'presence' do
       [:name, :cpf, :password, :email].each do |field|
@@ -19,6 +25,15 @@ describe User do
         expect(user_2).to_not be_valid
         expect(user_2).to have_at_least(1).error_on(:cpf)
       end
+
+      it 'for email' do
+        email = 'luiz.cezer@gmail.com'
+        user_1 = create :user, email: email
+        user_2 = build :user, email: email
+        expect(user_1).to be_valid
+        expect(user_2).to_not be_valid
+        expect(user_2).to have_at_least(1).error_on(:email)
+      end
     end
 
     context 'format' do
@@ -27,6 +42,14 @@ describe User do
           user = build :user, cpf: value
           expect(user).to_not be_valid
           expect(user).to have_at_least(1).error_on(:cpf)
+        end
+      end
+
+      it 'for email' do
+        invalid_format_emails.each do |value|
+          user = build :user, email: value
+          expect(user).not_to be_valid
+          expect(user).to have_at_least(1).error_on(:email)
         end
       end
     end
