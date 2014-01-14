@@ -1,0 +1,13 @@
+.pull-right
+  ul.nav.pull-right
+    li.dropdown
+      = link_to "Olá #{current_user.name}", '#', class: 'dropdown-toggle',
+        data: { toggle: :dropdown }
+      li = link_to 'Logout',
+        destroy_user_session_path, :method => :delete,
+          confirm: 'Deseja realmente sair ?', title: 'logout',
+          rel: :tooltip, data: { placement: :left }
+      li = link_to 'Cancelar Conta', registration_path(current_user),
+        method: :delete,
+        confirm: 'Deseja realmente cancelar sua conta ?', title: 'cancelar conta',
+        rel: :tooltip, data: { placement: :left }

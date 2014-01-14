@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
  */
+
+div#container { margin-top: 50px; width: 1000px; }
+.login { padding: 20px; border:1px dotted #000; }

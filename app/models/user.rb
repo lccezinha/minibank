@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :name, :cpf, :email
-  validates_uniqueness_of :cpf, :email
+  validates_uniqueness_of :email
   validates_format_of :cpf, with: /\A\d{11}\z/
   validates_format_of :email, with: Devise.email_regexp
 
