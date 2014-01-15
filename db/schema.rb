@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140115013715) do
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
     t.string   "number"
-    t.decimal  "total",      precision: 8, scale: 2, default: 100.0
+    t.decimal  "total",      precision: 8, scale: 2, default: 100.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

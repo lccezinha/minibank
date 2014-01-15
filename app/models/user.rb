@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   before_create :generate_account
 
+  delegate :total, to: :account, prefix: true
+
   validates_presence_of :name, :cpf, :email
   validates_uniqueness_of :email, :cpf
   validates_format_of :cpf, with: /\A\d{11}\z/

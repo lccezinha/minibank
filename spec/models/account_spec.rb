@@ -9,6 +9,7 @@ describe Account do
   it 'should start with 100,00' do
     user = create :user
     account = create :account, user_id: user.id
+    expect(account.user_id).to eql(user.id)
     expect(account.total).to eql(100)
   end
 
