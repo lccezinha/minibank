@@ -1,28 +1,27 @@
 class TransactionService
 
-  def initialize(transaction)
-    @transaction = transaction
+  def initialize(operation, account, current_user, value)
+    @operation = operation
+    @account = account
+    @current_user = current_user
+    @value = value
   end
 
   def execute
-    # deve retorar as msg do flash
-    case @transaction.operation
-    when 'booty' then minus
-    when 'deposit' then plus
+    case @operation
+    when 'booty' then booty
+    when 'deposit' then deposit
     end
-    # @trasaction.save
   end
 
   protected
 
-  def minus
-    p ['minus']
-    # @trasaction.account.total -= @value
+  def booty
+    @current_user.account.minus @value
   end
 
-  def plus
-    p ['plus']
-    # @trasaction.account.total += @value
+  def deposit
+    @current_user.account.plus @value
   end
 
 end

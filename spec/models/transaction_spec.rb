@@ -15,25 +15,9 @@ describe Transaction do
 
     context 'numericality' do
       [:value].each do |value|
-        it { should validate_numericality_of(value).only_integer }
+        it { should validate_numericality_of(value) }
         it { should_not allow_value(-1).for value }
       end
     end
   end
-
-  context 'operations' do
-
-    context 'when plus' do
-      pending
-      # user = create :user
-      # account = create :account, user_id: user.id
-      # transaction = create :transaction, account_id: account.id, operation: 'deposit'
-
-    end
-    context 'when minus' do
-      pending
-    end
-
-  end
-
 end

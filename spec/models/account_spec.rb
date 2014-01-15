@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Account do
-
   context 'associations' do
     it { should belong_to :user }
     it { should have_many :transactions }
@@ -28,6 +27,36 @@ describe Account do
 
   it 'should generate a random value to number' do
     pending
+  end
+
+  context 'respond_to' do
+    it { should respond_to(:minus) }
+    it { should respond_to(:plus) }
+  end
+
+  context 'operations' do
+    it 'when deposit is done' do
+      user = create :user
+      account = create :account, user_id: user.id
+      deposit = 10
+      expect { account.plus(deposit) }.to change(account, :total).by(deposit)
+    end
+
+    it 'when try to booty more than total' do
+      user = create :user
+      account = create :account, user_id: user.id
+      booty = 110
+      expect {
+        account.minus(booty)
+      }.to raise_error(Exception, 'Saldo insuficiente.')
+    end
+
+    it 'when booty is done' do
+      user = create :user
+      account = create :account, user_id: user.id
+      booty = 10
+      expect { account.minus(booty) }.to change(account, :total).by(-booty)
+    end
   end
 
 end
