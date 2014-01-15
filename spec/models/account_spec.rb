@@ -48,7 +48,7 @@ describe Account do
       booty = 110
       expect {
         account.minus(booty)
-      }.to raise_error(Exception, 'Saldo insuficiente.')
+      }.to raise_error(InsuficientMoney, 'Saldo insuficiente.')
     end
 
     it 'when booty is done' do
