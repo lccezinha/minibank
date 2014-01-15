@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe User do
@@ -5,7 +6,7 @@ describe User do
   context 'validations' do
     let(:invalid_format_emails) do
       ['_emai@email.com', 'dayvtonalmeida@2014@gmail.com', 'mlisi@bol.com,',
-        'julinha\\-laís@hotmail.com', 'neusa@agenciaweb,com.br',
+        'julinha-laís@hotmail.com', 'neusa@agenciaweb,com.br',
         'adcultura@yahoo,com.br', 'lopesmarinho2009@@hotmail.com',
         'venturalu@hotmail.com .br', 'zaelzabalbino@hotmail.co,']
     end

@@ -8,12 +8,12 @@ h2 Editar dados
     = f.input :email, required: true, autofocus: true
     = f.input :name, required: true, autofocus: true, label: 'Nome'
     = f.input :cpf, required: true, autofocus: true, label: 'CPF '
-    = f.input :password, autocomplete: "off", label: 'Senha',
+    = f.input :password, autocomplete: "off", label: 'Senha', \
         hint: "deixe em branco caso não queira alterar", required: false
-    = f.input :password_confirmation, required: false,
+    = f.input :password_confirmation, required: false, \
         label: 'Confirmação de Senha'
-    = f.input :current_password, label: 'Senha Atual',
-        hint: "confirme com seu password atual para alterar os dados",
+    = f.input :current_password, label: 'Senha Atual', \
+        hint: "confirme com seu password atual para alterar os dados", \
         required: true
 
   .form-actions

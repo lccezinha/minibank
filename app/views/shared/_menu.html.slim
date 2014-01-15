@@ -1,8 +1,8 @@
 .pull-right
   ul.nav.pull-right
-    li= link_to "Olá #{current_user.name}", '#', class: 'dropdown-toggle',
+    li= link_to "Olá #{current_user.name}", '#', class: 'dropdown-toggle', \
         data: { toggle: :dropdown }
-    li = link_to 'Logout',
-      destroy_user_session_path, :method => :delete,
-        confirm: 'Deseja realmente sair ?', title: 'logout',
+    li = link_to 'Logout', \
+      destroy_user_session_path, :method => :delete, \
+        confirm: 'Deseja realmente sair ?', title: 'logout', \
         rel: :tooltip, data: { placement: :left }

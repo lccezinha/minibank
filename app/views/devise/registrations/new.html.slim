@@ -7,12 +7,13 @@
       = f.error_notification
 
       .form-inputs
-        = f.input :name, required: true, label: 'Nome'
-        = f.input :email, required: true
-        = f.input :cpf, label: 'CPF', placeholder: 'somente números'
-        = f.input :password, required: true, label: 'Senha'
-        = f.input :password_confirmation, required: true,
-          label: 'Confirmação de Senha'
+        = f.input :name, required: true, label: 'Nome', class: 'input-xxlarge'
+        = f.input :email, required: true, class: 'input-xxlarge'
+        = f.input :cpf, label: 'CPF', placeholder: 'somente números', \
+            class: 'input-xxlarge'
+        = f.input :password, required: true, label: 'Senha', class: 'input-xxlarge'
+        = f.input :password_confirmation, required: true, \
+          label: 'Confirmação de Senha', class: 'input-xxlarge'
 
       .form-actions
         = f.button :submit, "Registrar", class: 'btn btn-block btn-success'

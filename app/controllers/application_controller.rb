@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    %i(sign_up sign_in account_update).each do |method|
-      devise_parameter_sanitizer.for(method) << %i(name cpf)
+    [:sign_up, :sign_in, :account_update].each do |method|
+      devise_parameter_sanitizer.for(method) << [:name, :cpf]
     end
   end
 end

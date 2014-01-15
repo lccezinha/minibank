@@ -11,11 +11,15 @@ module ApplicationHelper
         when :alert ; 'alert alert-error'
         when :warning ; 'alert alert-warning'
       end
-      content_tag(:div, :class => clazz) do
-        content_tag(:button,'x',:class => 'close', data: { dismiss: "alert"}) +
+      content_tag(:div, class: clazz) do
+        content_tag(:button, 'x', class: 'close', data: { dismiss: "alert" }) +
         content_tag(:h3, flash.first.second)
       end
     end
+  end
+
+  def to_real(value)
+    number_to_currency(value, unit: "R$ ", separator: ".")
   end
 
 end

@@ -14,22 +14,27 @@ html
               ul.nav.pull-right
                 li = link_to "Olá #{current_user.name}", '#'
                 li.divider
-                li = link_to 'Logout', destroy_user_session_path,
+                li = link_to 'Logout', destroy_user_session_path, \
                   method: :delete, data: { confirm: 'Deseja sair ?' }
+
       = show_flash(flash)
       .span3
         .sidebar-nav
           .well
             ul.nav.nav-list
               li.nav-header = 'Ações'
-              li = link_to 'Saques', '#'
+              li = link_to 'Saques', new_booty_path
               li = link_to 'Depósitos', '#'
               li = link_to 'Transferências', '#'
               li = link_to 'Extratos', '#'
               li = link_to 'Editar Dados', edit_user_path(current_user)
-              li = link_to 'Cancelar Conta', registration_path(current_user),
-                data: { confirm: 'Quer realmente apagar a sua conta ?' },
+              li = link_to 'Cancelar Conta', registration_path(current_user), \
+                data: { confirm: 'Quer realmente apagar a sua conta ?' }, \
                 method: :delete
       .span6.well
+        .pull-right
+          span = "Seu saldo é: <span class='label label-success'>#{to_real(current_user.account_total)}</span>".html_safe
+          br
+        hr
         = yield
 
