@@ -6,9 +6,13 @@ describe TransactionService do
     user = create :user
     account = create :account, user_id: user.id
     transaction = create :transaction, account_id: account.id, operation: 'deposit'
+
     transaction_service = TransactionService.new transaction.operation,
-      account, user
-    transaction_service.stub_chain(:execute, :booty)
+      account, user, transaction.value
+
+    expect {
+      transaction_service.execute
+    }.to change(account.reload, :total).by(transaction.value)
   end
   # it 'when booty' do
   #   user = create :user
