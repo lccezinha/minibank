@@ -1,0 +1,42 @@
+ptBR:
+  errors:
+    messages:
+      expired: 'expirou, por favor solicite um novo'
+      not_found: 'não encontrado'
+      already_confirmed: 'já foi confirmado, por favor tente fazer login'
+      not_locked: 'não estava bloqueado'
+      not_saved:
+        one: "1 erro impediu que %{resource} fosse salvo:"
+        other: "%{count} erros impediram que %{resource} fosse salvo:"
+
+  devise:
+    failure:
+      already_authenticated: 'Você já está logado.'
+      unauthenticated: 'Você precisa se logar.'
+      invalid: 'E-mail e senha inválidos'
+      invalid_token: 'Token de autenticação inválido.'
+      not_found_in_database: 'Usuário não encontrado.'
+    sessions:
+      signed_in: 'Autenticado com sucesso.'
+      signed_out: 'Logout feito com sucesso.'
+    passwords:
+      send_instructions: 'Você receberá um e-mail com instruções sobre como reinicializar sua senha em poucos minutos.'
+      updated: 'Sua senha foi alterada com sucesso. Você está logado agora.'
+      updated_not_active: 'Sua senha foi alterada com sucesso.'
+      send_paranoid_instructions: 'Caso seu e-mail esteja cadastrado, você receberá um link para recuperação de senha no seu e-mail em poucos minutos.'
+      no_token: 'Você não pode acessar esta página sem que seja a partir de um e-mail de reinicialização de senha. Se você chegou aqui através de um e-mail de reinicialização de senha, por favor verifique se você usou a URL completa que foi informada.'
+    registrations:
+      signed_up: 'Bem-vindo! Você se registrou com sucesso.'
+      signed_up_but_unconfirmed: 'Uma mensagem com um link de confirmação foi enviado para o seu e-mail. Por favor, abra o link para ativar sua conta.'
+      signed_up_but_inactive: 'Você se cadastrou com sucesso. Porém, sua conta ainda não está ativada.'
+      signed_up_but_locked: 'Você se cadastrou com sucesso. Porém, sua conta está bloqueada.'
+      updated: 'Você atualizou sua conta com sucesso.'
+      update_needs_confirmation: 'Você atualizou sua conta com sucesso, mas nós precisamos verificar seu endereço de e-mail. Por favor, verifique seus e-mails e clique no link de confirmação para finalizar a criação da sua conta.'
+      destroyed: 'Até mais! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instruções para confirmação de conta'
+      reset_password_instructions:
+        subject: 'Instruções para reinicialização de senha'
+      unlock_instructions:
+        subject: 'Instruções para desbloqueio de conta'

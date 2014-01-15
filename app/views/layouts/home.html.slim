@@ -1,0 +1,35 @@
+html
+  head
+    title Bank # HOME
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+    #container
+      .navbar.navbar-fixed-top.navbar-static-top
+        .navbar-inner
+          .container.nav-collapsecollapse
+            = link_to 'My Bank', '#', class: 'brand'
+            .pull-right
+              ul.nav.pull-right
+                li = link_to "Olá #{current_user.name}", '#'
+                li.divider
+                li = link_to 'Logout', destroy_user_session_path,
+                  method: :delete, data: { confirm: 'Deseja sair ?' }
+      = show_flash(flash)
+      .span3
+        .sidebar-nav
+          .well
+            ul.nav.nav-list
+              li.nav-header = 'Ações'
+              li = link_to 'Saques', '#'
+              li = link_to 'Depósitos', '#'
+              li = link_to 'Transferências', '#'
+              li = link_to 'Extratos', '#'
+              li = link_to 'Editar Dados', edit_user_path(current_user)
+              li = link_to 'Cancelar Conta', registration_path(current_user),
+                data: { confirm: 'Quer realmente apagar a sua conta ?' },
+                method: :delete
+      .span6.well
+        = yield
+

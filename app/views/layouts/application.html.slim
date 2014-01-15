@@ -1,14 +1,10 @@
 html
-head
-  title Bank
-  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-  = javascript_include_tag "application", "data-turbolinks-track" => true
-  = csrf_meta_tags
-body
-  #container
-    .navbar.navbar-fixed-top.navbar-static-top
-      .navbar-inner
-        = show_menu
-
-    = show_flash(flash) if flash
-    = yield
+  head
+    title Bank # APPLICATION
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+    #container
+      = show_flash(flash)
+      = yield
