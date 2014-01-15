@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   validates_format_of :cpf, with: /\A\d{11}\z/
   validates_format_of :email, with: Devise.email_regexp
 
+  has_one :account
+
 end

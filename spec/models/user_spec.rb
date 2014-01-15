@@ -54,6 +54,10 @@ describe User do
       end
     end
 
+    context 'associations' do
+      it { should have_one :account }
+    end
+
   end
 
 end
