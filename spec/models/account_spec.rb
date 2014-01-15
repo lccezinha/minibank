@@ -4,6 +4,7 @@ describe Account do
 
   context 'associations' do
     it { should belong_to :user }
+    it { should have_many :transactions }
   end
 
   it 'should start with 100,00' do

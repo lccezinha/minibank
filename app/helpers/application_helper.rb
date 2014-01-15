@@ -1,7 +1,16 @@
+# coding: utf-8
 module ApplicationHelper
 
   def show_menu
     render partial: 'shared/menu' if user_signed_in?
+  end
+
+  def show_title(operation)
+    op = case operation
+    when 'booty' then 'Saque'
+    when 'deposit' then 'Depósito'
+    end
+    "Dados para #{op}"
   end
 
   def show_flash(flash)
