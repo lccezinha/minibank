@@ -19,11 +19,15 @@ describe Account do
     expect(account.user_id).to eql(user.id)
   end
 
+  context 'numericality' do
+    [:total].each do |value|
+      it { should validate_numericality_of(value) }
+      it { should_not allow_value(-1).for value }
+    end
+  end
+
   it 'should generate a random value to number' do
-    # user = create :user
-    # account = build :account, user_id: user.id
-    # expect(account.number).not_to be_blank
-    # expect { account.save }.to
+    pending
   end
 
 end
