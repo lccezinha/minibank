@@ -58,6 +58,12 @@ describe User do
       it { should have_one :account }
     end
 
+    it 'should create an account for user' do
+      user = build :user
+      expect { user.save }.to change(Account, :count).by(1)
+      expect(Account.last.user_id).to eql(user.id)
+    end
+
   end
 
 end
