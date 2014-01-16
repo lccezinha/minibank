@@ -15,13 +15,13 @@ class Account < ActiveRecord::Base
       e.message
     else
       self.total -= value
-      return self if self.save
+      'Saque realizado com sucesso.' if self.save
     end
   end
 
   def plus(value)
     self.total += value
-    self.save
+    'Depósito realizado com sucesso.' if self.save
   end
 
   # before_save :generate_number

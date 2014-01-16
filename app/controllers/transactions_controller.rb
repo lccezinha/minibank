@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
     transaction_service = TransactionService.new @transaction.operation,
       @account, current_user, @transaction.value
 
-    @transaction, flash = transaction_service.execute
+    flash[:notice] = transaction_service.execute
     respond_with @transaction, location: root_path
   end
 

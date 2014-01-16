@@ -12,7 +12,7 @@ describe TransactionService do
 
     expect {
       transaction_service.execute
-    }.to change(account.reload, :total).by(transaction.value)
+    }.to change(account, :total).by(transaction.value)
   end
   # it 'when booty' do
   #   user = create :user

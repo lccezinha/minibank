@@ -8,10 +8,11 @@ class TransactionService
   end
 
   def execute
-    case @operation
+    message = case @operation
     when 'booty' then booty
     when 'deposit' then deposit
     end
+    message
   end
 
   protected
