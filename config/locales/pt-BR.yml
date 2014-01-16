@@ -9,6 +9,7 @@ ptBR:
               cpf:
                 invalid: "Informe somente os 11 digítos"
                 blank: "Não pode ficar em branco"
+                taken: 'CPF já em uso'
               password_confirmation:
                 blank: "Não pode ficar em branco"
                 confirmation: "Senhas não conferem"
@@ -20,3 +21,6 @@ ptBR:
                 blank: "Não pode ficar em branco"
                 too_short: "Email muito curto"
                 invalid: "Email inválido"
+              current_password:
+                invalid: "Senha inválida"
+                blank: "Não pode ficar em branco"

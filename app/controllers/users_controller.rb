@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:user][:password].blank?
-      params[:user].delete(:password)
-      params[:user].delete(:password_confirmation)
+    if user_params[:password].blank?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
     end
     flash[:notice] = 'Dados de conta atualizados' if
-      @user.update_attributes(params[:user])
+      @user.update_attributes(user_params)
     respond_with @user, location: root_path
   end
 
