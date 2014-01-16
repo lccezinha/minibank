@@ -12,7 +12,10 @@ class Account < ActiveRecord::Base
     begin
       check_total(value)
     rescue => e
-      'Saldo insuficiente.'
+      e.message
+    else
+      self.total -= value
+      return self if self.save
     end
   end
 
@@ -27,8 +30,6 @@ class Account < ActiveRecord::Base
 
   def check_total(value)
     raise InsuficientMoney, 'Saldo insuficiente.' if self.total < value
-    self.total -= value
-    self.save
   end
 
   # def generate_number
