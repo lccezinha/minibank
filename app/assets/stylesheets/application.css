@@ -13,4 +13,5 @@
  */
 
 div#container { width: 1000px; margin: 0 auto; padding-top: 100px; }
-.fix-input { height: 10px; }
+table.large-table { width: 100%; }
+table#table-transactions tr td { text-align: center; }

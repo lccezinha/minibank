@@ -1,0 +1,22 @@
+ptBR:
+  activerecord:
+      errors:
+        models:
+          user:
+            attributes:
+              name:
+                blank: "Não pode ficar em branco"
+              cpf:
+                invalid: "Informe somente os 11 digítos"
+                blank: "Não pode ficar em branco"
+              password_confirmation:
+                blank: "Não pode ficar em branco"
+                confirmation: "Senhas não conferem"
+              password:
+                blank:  "Não pode ficar em branco"
+                too_short: "Senha muito curta"
+              email:
+                taken: "Email já está em uso"
+                blank: "Não pode ficar em branco"
+                too_short: "Email muito curto"
+                invalid: "Email inválido"

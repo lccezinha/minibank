@@ -23,6 +23,7 @@ html
           .well
             ul.nav.nav-list
               li.nav-header = 'Ações'
+              li = link_to 'Início', root_path
               li = link_to 'Saques', new_transaction_path(operation: 'booty')
               li = link_to 'Depósitos', new_transaction_path(operation: 'deposit')
               li = link_to 'Transferências', '#'

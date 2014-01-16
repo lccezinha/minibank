@@ -20,6 +20,19 @@ module ApplicationHelper
     "Dados para #{op}"
   end
 
+  def show_date(date)
+    date.strftime "%d/%m/%y ás %H:%M"
+  end
+
+  def operation_type(operation)
+    op, clazz = case operation
+    when 'booty' then ['Saque', 'info']
+    when 'deposit' then ['Depósito', 'warning']
+    end
+    render partial: 'shared/operation_type',
+      locals: { clazz: clazz, operation: op }
+  end
+
   def show_flash(flash)
     unless flash.nil? || flash.empty?
       clazz = case flash.first.first
@@ -27,10 +40,8 @@ module ApplicationHelper
         when :alert ; 'alert alert-error'
         when :warning ; 'alert alert-warning'
       end
-      content_tag(:div, class: clazz) do
-        content_tag(:button, 'x', class: 'close', data: { dismiss: "alert" }) +
-        content_tag(:h3, flash.first.second)
-      end
+      render partial: 'shared/flash_message',
+        locals: { clazz: clazz, message: flash.first.second }
     end
   end
 
