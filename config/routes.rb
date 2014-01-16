@@ -3,6 +3,7 @@ Bank::Application.routes.draw do
 
   resources :users
   resources :transactions, only: [:new, :create]
+  resources :extracts, only: [:index]
 
   root "home#index"
 

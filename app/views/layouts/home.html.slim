@@ -27,7 +27,7 @@ html
               li = link_to 'Saques', new_transaction_path(operation: 'booty')
               li = link_to 'Depósitos', new_transaction_path(operation: 'deposit')
               li = link_to 'Transferências', '#'
-              li = link_to 'Extratos', '#'
+              li = link_to 'Extratos', extracts_path
               li = link_to 'Editar Dados', edit_user_path(current_user)
               li = link_to 'Cancelar Conta', registration_path(current_user), \
                 data: { confirm: 'Quer realmente apagar a sua conta ?' }, \

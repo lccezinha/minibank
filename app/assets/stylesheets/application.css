@@ -16,3 +16,4 @@ div#container { width: 1000px; margin: 0 auto; padding-top: 100px; }
 table.large-table { width: 100%; }
 table#table-transactions tr td { text-align: center; }
 #empty-transactions { text-align: center; padding: 5px; }
+div#extracts-info { width: 100%; }
