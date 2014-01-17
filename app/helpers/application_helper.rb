@@ -33,6 +33,11 @@ module ApplicationHelper
       locals: { clazz: clazz, operation: op }
   end
 
+  def table_transactions(transactions)
+    render partial: 'shared/transactions',
+      locals: { transactions: transactions }
+  end
+
   def show_flash(flash)
     unless flash.nil? || flash.empty?
       clazz = case flash.first.first

@@ -1,4 +1,15 @@
 ptBR:
+  activemodel:
+    errors:
+      models:
+          extract:
+            attributes:
+              start_date:
+                invalid: "Data Inválida"
+                blank: "Não pode ficar em branco"
+              end_date:
+                invalid: "Data Inválida"
+                blank: "Não pode ficar em branco"
   activerecord:
       errors:
         models:

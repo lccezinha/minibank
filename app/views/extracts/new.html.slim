@@ -1,0 +1,9 @@
+#extracts-info
+  h5 = "Informe o intervalo para tirar seu extrato"
+  br
+  = form_for @extract, url: extracts_path, method: :get do |f|
+    span.pull-left
+      = f.date_field :start_date, placeholder: 'data inicial'
+      = f.date_field :end_date, placeholder: 'data final'
+    span.pull-right
+      = f.submit 'Filtrar', class: 'btn btn-info'

@@ -16,13 +16,4 @@ describe UsersController do
     expect(user.reload.name).to eql(new_name)
   end
 
-  it '/ :PUT should update user with change password' do
-    pending
-    # user = create :user, user_params
-    # new_password = '123456'
-    # put :update, id: user.id, user: user_params.merge(password: new_password,
-    #   password_confirmation: new_password, current_password: user.password)
-    # expect(user.reload.password).to eql(new_password)
-  end
-
 end

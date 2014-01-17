@@ -2,19 +2,7 @@
   - if @transactions.any?
     h5 = 'Esse é um resumo de suas últimas atividades: '
     hr
-    table.table-striped.large-table#table-transactions
-      thead
-        tr
-          th Ação
-          th Data
-          th Valor
-      tbody
-
-          - @transactions.each do |transaction|
-            tr
-              td = operation_type transaction.operation
-              td = show_date transaction.created_at
-              td = to_real transaction.value
+    = table_transactions @transactions
   - else
     h5#empty-transactions.alert.alert-info
       = 'Você não efetuou nenhuma transação no momento.'

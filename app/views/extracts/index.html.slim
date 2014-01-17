@@ -1,11 +1,5 @@
-#extracts-info
-  h5 = "Informe o intervalo para tirar seu extrato"
-  br
-  = form_for extracts_path, { method: :get } do
-    span.pull-left
-      = text_field_tag :start_date, nil, \
-        { placeholder: 'data inicial' }
-      = text_field_tag :end_date, nil, \
-        { placeholder: 'data final' }
-    span.pull-right
-      = submit_tag 'Filtrar', class: 'btn btn-info'
+- if @transactions.any?
+  = table_transactions @transactions
+- else
+  h5#empty-transactions.alert.alert-info
+    = 'Você não efetuou nenhuma transação no período informado.'
