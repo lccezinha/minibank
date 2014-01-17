@@ -4,7 +4,7 @@
 + Realizar saques OK
 + Realizar transferências entre contas PENDENTE
 + Solicitar saldo OK
-+ Solicitar extrato filtrando por data início e final PENDENTE
++ Solicitar extrato filtrando por data início e final OK
 
 ###### Regras:
 + Para realizar saques e transferências é necessário autenticar o usuário
