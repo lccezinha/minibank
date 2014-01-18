@@ -11,9 +11,9 @@ class TransactionsController < ApplicationController
     @transaction = @account.transactions.build transaction_params
 
     transaction_service = TransactionService.new @transaction.operation,
-      @account, current_user, @transaction.value
+      @account, current_user, @transaction.quantity
 
-    flash[:notice] = transaction_service.execute
+    flash[:notice] = transaction_service.execute if @transaction.save
     respond_with @transaction, location: root_path
   end
 
@@ -24,6 +24,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:value, :operation)
+    params.require(:transaction).permit(:quantity, :operation)
   end
 end

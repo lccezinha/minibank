@@ -1,0 +1,8 @@
+h5 = show_title 'Depósito'
+= form_for @transaction do |f|
+  = f.hidden_field :operation, value: 'deposit'
+  .input-prepend.input-append
+    span.add-on = 'R$'
+    = f.text_field :quantity, id: 'appendedPrependedInput', class: 'fix-input'
+    span.add-on = '.00'
+    = f.submit 'Depósito', class: 'btn btn-info'

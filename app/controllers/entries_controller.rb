@@ -1,0 +1,2 @@
+class EntriesController < TransactionsController
+end

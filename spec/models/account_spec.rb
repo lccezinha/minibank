@@ -42,20 +42,29 @@ describe Account do
       expect { account.plus(deposit) }.to change(account, :total).by(deposit)
     end
 
-    it 'when try to booty more than total' do
+    it 'when try to entry more than total' do
       user = create :user
       account = create :account, user_id: user.id
-      booty = 110
+      entry = 110
       expect {
-        account.minus(booty)
+        account.minus(entry)
       }.to raise_error(InsuficientMoney, 'Saldo insuficiente.')
     end
 
-    it 'when booty is done' do
+    it 'when try to entry more than total' do
       user = create :user
       account = create :account, user_id: user.id
-      booty = 10
-      expect { account.minus(booty) }.to change(account, :total).by(-booty)
+      entry = 0
+      expect {
+        account.plus(entry)
+      }.to raise_error(InsuficientMoney, 'Valor inválido para depósito.')
+    end
+
+    it 'when entry is done' do
+      user = create :user
+      account = create :account, user_id: user.id
+      entry = 10
+      expect { account.minus(entry) }.to change(account, :total).by(-entry)
     end
   end
 

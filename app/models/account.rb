@@ -20,8 +20,14 @@ class Account < ActiveRecord::Base
   end
 
   def plus(value)
-    self.total += value
-    'Depósito realizado com sucesso.' if self.save
+    begin
+      check_quantity(value)
+    rescue => e
+      e.message
+    else
+      self.total += value
+      'Depósito realizado com sucesso.' if self.save
+    end
   end
 
   # before_save :generate_number
@@ -30,6 +36,10 @@ class Account < ActiveRecord::Base
 
   def check_total(value)
     raise InsuficientMoney, 'Saldo insuficiente.' if self.total < value
+  end
+
+  def check_quantity(value)
+    raise InsuficientMoney, 'Valor inválido para depósito.' if value <= 0
   end
 
   # def generate_number

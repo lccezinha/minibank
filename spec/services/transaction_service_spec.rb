@@ -8,11 +8,11 @@ describe TransactionService do
     transaction = create :transaction, account_id: account.id, operation: 'deposit'
 
     transaction_service = TransactionService.new transaction.operation,
-      account, user, transaction.value
+      account, user, transaction.quantity
 
     expect {
       transaction_service.execute
-    }.to change(account, :total).by(transaction.value)
+    }.to change(account, :total).by(transaction.quantity)
   end
   # it 'when booty' do
   #   user = create :user

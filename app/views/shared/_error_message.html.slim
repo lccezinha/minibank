@@ -1,0 +1,7 @@
+- if resource.errors.any?
+  .alert.alert-error
+    button.close type="button" data="dismiss: alert" = 'X'
+    h4= "#{pluralize(resource.errors.count, 'erro')} encontrado(s)"
+    ul
+      - resource.errors.full_messages do |message|
+        li = message

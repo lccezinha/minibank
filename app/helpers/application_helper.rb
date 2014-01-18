@@ -5,19 +5,8 @@ module ApplicationHelper
     render partial: 'shared/menu' if user_signed_in?
   end
 
-  def show_submit_action(operation)
-    case operation
-    when 'booty' then 'Sacar'
-    when 'deposit' then 'Depositar'
-    end
-  end
-
   def show_title(operation)
-    op = case operation
-    when 'booty' then 'Saque'
-    when 'deposit' then 'Depósito'
-    end
-    "Dados para #{op}"
+    "Dados para #{operation}"
   end
 
   def show_date(date)
@@ -26,7 +15,7 @@ module ApplicationHelper
 
   def operation_type(operation)
     op, clazz = case operation
-    when 'booty' then ['Saque', 'info']
+    when 'entry' then ['Saque', 'info']
     when 'deposit' then ['Depósito', 'warning']
     end
     render partial: 'shared/operation_type',
