@@ -9,6 +9,10 @@ module ApplicationHelper
     "Dados para #{operation}"
   end
 
+  def show_error_message(resource)
+    render partial: 'shared/error_message', locals: { resource: resource }
+  end
+
   def show_date(date)
     date.strftime "%d/%m/%y ás %H:%M"
   end
