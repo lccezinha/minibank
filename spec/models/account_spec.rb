@@ -51,7 +51,7 @@ describe Account do
       }.to raise_error(InsuficientMoney, 'Saldo insuficiente.')
     end
 
-    it 'when try to entry more than total' do
+    it 'when try to deposit <= 0' do
       user = create :user
       account = create :account, user_id: user.id
       entry = 0

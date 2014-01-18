@@ -1,5 +1,5 @@
 h5 = show_title 'Saque'
-= form_for @transaction do |f|
+= form_for @transaction, url: entries_path do |f|
   = show_error_message @transaction
   = f.hidden_field :operation, value: 'entry'
   .input-prepend.input-append

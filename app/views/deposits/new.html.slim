@@ -1,5 +1,5 @@
 h5 = show_title 'Depósito'
-= form_for @transaction do |f|
+= form_for @transaction, url: deposits_path do |f|
   = f.hidden_field :operation, value: 'deposit'
   = show_error_message @transaction
   .input-prepend.input-append

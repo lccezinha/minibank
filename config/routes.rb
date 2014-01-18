@@ -4,8 +4,8 @@ Bank::Application.routes.draw do
   resources :users
   resources :transactions, only: [:new, :create]
   resources :extracts, only: [:new, :index]
-  resources :entries, only: [:new]
-  resources :deposits, only: [:new]
+  resources :entries, only: [:new, :create]
+  resources :deposits, only: [:new, :create]
   root "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

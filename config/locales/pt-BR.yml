@@ -2,36 +2,44 @@ ptBR:
   activemodel:
     errors:
       models:
-          extract:
-            attributes:
-              start_date:
-                invalid: "Data Inválida"
-                blank: "Não pode ficar em branco"
-              end_date:
-                invalid: "Data Inválida"
-                blank: "Não pode ficar em branco"
+        extract:
+          attributes:
+            start_date:
+              invalid: "Data Inválida"
+              blank: "Não pode ficar em branco"
+            end_date:
+              invalid: "Data Inválida"
+              blank: "Não pode ficar em branco"
   activerecord:
-      errors:
-        models:
-          user:
-            attributes:
-              name:
-                blank: "Não pode ficar em branco"
-              cpf:
-                invalid: "Informe somente os 11 digítos"
-                blank: "Não pode ficar em branco"
-                taken: 'CPF já em uso'
-              password_confirmation:
-                blank: "Não pode ficar em branco"
-                confirmation: "Senhas não conferem"
-              password:
-                blank:  "Não pode ficar em branco"
-                too_short: "Senha muito curta"
-              email:
-                taken: "Email já está em uso"
-                blank: "Não pode ficar em branco"
-                too_short: "Email muito curto"
-                invalid: "Email inválido"
-              current_password:
-                invalid: "Senha inválida"
-                blank: "Não pode ficar em branco"
+    errors:
+      attributes:
+        transaction:
+          quantity: Valor
+      models:
+        transaction:
+          attributes:
+            quantity:
+              blank: "Não pode ficar em branco"
+              not_a_number: "Valor informado não é numérico"
+        user:
+          attributes:
+            name:
+              blank: "Não pode ficar em branco"
+            cpf:
+              invalid: "Informe somente os 11 digítos"
+              blank: "Não pode ficar em branco"
+              taken: 'CPF já em uso'
+            password_confirmation:
+              blank: "Não pode ficar em branco"
+              confirmation: "Senhas não conferem"
+            password:
+              blank:  "Não pode ficar em branco"
+              too_short: "Senha muito curta"
+            email:
+              taken: "Email já está em uso"
+              blank: "Não pode ficar em branco"
+              too_short: "Email muito curto"
+              invalid: "Email inválido"
+            current_password:
+              invalid: "Senha inválida"
+              blank: "Não pode ficar em branco"

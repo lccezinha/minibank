@@ -3,5 +3,5 @@
     button.close type="button" data="dismiss: alert" = 'X'
     h4= "#{pluralize(resource.errors.count, 'erro')} encontrado(s)"
     ul
-      - resource.errors.full_messages do |message|
+      - resource.errors.full_messages.each do |message|
         li = message
