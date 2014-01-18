@@ -25,10 +25,6 @@ describe Account do
     end
   end
 
-  it 'should generate a random value to number' do
-    pending
-  end
-
   context 'respond_to' do
     it { should respond_to(:minus) }
     it { should respond_to(:plus) }

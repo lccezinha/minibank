@@ -1,5 +1,9 @@
 ptBR:
   activemodel:
+    attributes:
+      extract:
+        start_date: Data Inicial
+        end_date: Data Final
     errors:
       models:
         extract:
@@ -11,16 +15,17 @@ ptBR:
               invalid: "Data Inválida"
               blank: "Não pode ficar em branco"
   activerecord:
+    attributes:
+      transaction:
+        quantity: Valor
     errors:
-      attributes:
-        transaction:
-          quantity: Valor
       models:
         transaction:
           attributes:
             quantity:
-              blank: "Não pode ficar em branco"
-              not_a_number: "Valor informado não é numérico"
+              blank: "Não pode ficar em branco."
+              not_a_number: "Valor informado não é numérico."
+              greater_than: "Valor informado deve ser maior que 0."
         user:
           attributes:
             name:

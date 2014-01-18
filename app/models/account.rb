@@ -1,6 +1,5 @@
 # coding: utf-8
-class InsuficientMoney < Exception
-end
+class InsuficientMoney < Exception; end
 
 class Account < ActiveRecord::Base
   belongs_to :user
@@ -30,8 +29,6 @@ class Account < ActiveRecord::Base
     end
   end
 
-  # before_save :generate_number
-
   protected
 
   def check_total(value)
@@ -41,9 +38,4 @@ class Account < ActiveRecord::Base
   def check_quantity(value)
     raise InsuficientMoney, 'Valor inválido para depósito.' if value <= 0
   end
-
-  # def generate_number
-  #   number = rand 20000
-  # end
-
 end
