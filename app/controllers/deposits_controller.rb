@@ -13,7 +13,8 @@ class DepositsController < ApplicationController
     transaction_service = TransactionService.new @transaction.operation,
       @account, current_user, @transaction.quantity
 
-    flash[:notice] = transaction_service.execute if @transaction.save
+    flash[:notice] = transaction_service.execute
+    @transaction.save if flash[:notice].present?
     respond_with @transaction, location: root_path
   end
 

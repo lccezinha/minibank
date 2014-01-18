@@ -14,7 +14,7 @@ class Account < ActiveRecord::Base
       e.message
     else
       self.total -= value
-      'Saque realizado com sucesso.' if self.save
+      self.save
     end
   end
 
@@ -25,7 +25,7 @@ class Account < ActiveRecord::Base
       e.message
     else
       self.total += value
-      'Depósito realizado com sucesso.' if self.save
+      self.save
     end
   end
 
