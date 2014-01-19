@@ -8,13 +8,13 @@ describe Transaction do
 
   context 'validations' do
     context 'presence' do
-      [:value].each do |value|
+      [:quantity].each do |value|
         it { should validate_presence_of value }
       end
     end
 
     context 'numericality' do
-      [:value].each do |value|
+      [:quantity].each do |value|
         it { should validate_numericality_of(value) }
         it { should_not allow_value(-1).for value }
       end

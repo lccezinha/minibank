@@ -16,17 +16,15 @@ html
                 li.divider
                 li = link_to 'Logout', destroy_user_session_path, \
                   method: :delete, data: { confirm: 'Deseja sair ?' }
-
-      = show_flash(flash)
       .span3
         .sidebar-nav
           .well
             ul.nav.nav-list
               li.nav-header = 'Ações'
               li = link_to 'Início', root_path
-              li = link_to 'Saques', new_transaction_path(operation: 'booty')
-              li = link_to 'Depósitos', new_transaction_path(operation: 'deposit')
-              li = link_to 'Transferências', '#'
+              li = link_to 'Saques', new_entry_path
+              li = link_to 'Depósitos', new_deposit_path
+              li = link_to 'Transferências', new_transfer_path
               li = link_to 'Extratos', new_extract_path
               li = link_to 'Editar Dados', edit_user_path(current_user)
               li = link_to 'Cancelar Conta', registration_path(current_user), \

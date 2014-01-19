@@ -1,15 +1,15 @@
 class TransactionService
 
-  def initialize(operation, account, current_user, value)
+  def initialize(operation, account, current_user, quantity)
     @operation = operation
     @account = account
     @current_user = current_user
-    @value = value
+    @quantity = quantity
   end
 
   def execute
     message = case @operation
-    when 'booty' then booty
+    when 'entry' then entry
     when 'deposit' then deposit
     end
     message
@@ -17,12 +17,12 @@ class TransactionService
 
   protected
 
-  def booty
-    @current_user.account.minus @value
+  def entry
+    @current_user.account.minus @quantity
   end
 
   def deposit
-    @current_user.account.plus @value
+    @current_user.account.plus @quantity
   end
 
 end
