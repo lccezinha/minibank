@@ -10,17 +10,19 @@ describe TransactionService do
     transaction_service = TransactionService.new transaction.operation,
       account, user, transaction.quantity
 
-    expect {
-      transaction_service.execute
-    }.to change(account, :total).by(transaction.quantity)
+    transaction_service.stub_chain(:execute, :deposit)
   end
-  # it 'when booty' do
-  #   user = create :user
-  #   account = create :account, user_id: user.id
-  #   transaction = create :transaction, account_id: account.id, operation: 'deposit'
-  #   transaction_service = TransactionService.new transaction
-  #   transaction_service.stub_chain(:execute, :booty)
-  # end
+
+  it 'when entry' do
+    user = create :user
+    account = create :account, user_id: user.id
+    transaction = create :transaction, account_id: account.id, operation: 'entry'
+
+    transaction_service = TransactionService.new transaction.operation,
+      account, user, transaction.quantity
+
+    transaction_service.stub_chain(:execute, :entry)
+  end
 
 end
 
