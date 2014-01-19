@@ -1,0 +1,21 @@
+h5 = show_title 'Transferência'
+= simple_form_for @transaction, url: transfers_path do |f|
+  = f.input :operation, as: :hidden, input_html: { value: 'transfer' }
+  = f.error_notification
+
+  .form-inputs
+    = f.input :quantity, label: 'Valor', class: 'fix-input', placeholder: 'Valor', \
+      required: true
+    = f.input :account_destiny_id, placeholder: 'Conta p/ transferência', \
+      label: 'Conta destino', required: true
+
+    = f.button :submit, 'Transferir', class: 'btn btn-info'
+
+hr
+.transfer-info
+  h5 = 'Informações sobre transferência: '
+  ul
+    li = 'De segunda a sexta das 9 às 18 horas a taxa é 5 reais por transferência'
+    li = 'Fora desse horário a taxa é 7 reais'
+    li = 'Acima de 1000 reais há um adicional de 10 reais na taxa'
+

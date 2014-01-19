@@ -11,5 +11,4 @@ class ExtractsController < ApplicationController
       current_user.account
     respond_with @transactions, location: extracts_path
   end
-
 end
