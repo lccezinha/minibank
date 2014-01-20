@@ -1,6 +1,4 @@
 # coding: utf-8
-class InsuficientMoney < Exception; end
-
 class Account < ActiveRecord::Base
   belongs_to :user
   has_many :transactions
@@ -8,34 +6,24 @@ class Account < ActiveRecord::Base
   validates_numericality_of :total, greater_than: 0
 
   def minus(value)
-    begin
-      check_total(value)
-    rescue => e
-      e.message
-    else
-      self.total -= value
-      self.save
-    end
+    return false if check_total(value)
+    self.total -= value
+    self.save
   end
 
   def plus(value)
-    begin
-      check_quantity(value)
-    rescue => e
-      e.message
-    else
-      self.total += value
-      self.save
-    end
+    return false if check_quantity(value)
+    self.total += value
+    self.save
   end
 
   protected
 
   def check_total(value)
-    raise InsuficientMoney, 'Saldo insuficiente.' if self.total < value
+    value.nil? || self.total < value
   end
 
   def check_quantity(value)
-    raise InsuficientMoney, 'Valor inválido para depósito.' if value <= 0
+    value.nil? || value <= 0
   end
 end

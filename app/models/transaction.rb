@@ -8,4 +8,23 @@ class Transaction < ActiveRecord::Base
     where("date(created_at) BETWEEN ? AND ?", start_date, end_date).
     where(account_id: account.id)
   }
+
+  validate :check_quantity
+
+  def check_quantity
+    if entry?
+      errors.add(:quantity, 'Saldo insuficiente.') unless account.minus(quantity)
+    elsif deposit?
+      errors.add(:quantity, 'Valor inválido para depósito') unless account.plus(quantity)
+    end
+  end
+
+  def entry?
+    operation.eql?('entry')
+  end
+
+  def deposit?
+    operation.eql?('deposit')
+  end
+
 end

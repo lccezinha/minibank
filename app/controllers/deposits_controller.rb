@@ -9,12 +9,7 @@ class DepositsController < ApplicationController
 
   def create
     @transaction = @account.transactions.build transaction_params
-
-    transaction_service = TransactionService.new @transaction.operation,
-      @account, current_user, @transaction.quantity
-
-    flash[:notice] = transaction_service.execute
-    @transaction.save if flash[:notice].present?
+    flash[:notice] = 'Depósito realizado com sucesso.' if @transaction.save
     respond_with @transaction, location: root_path
   end
 

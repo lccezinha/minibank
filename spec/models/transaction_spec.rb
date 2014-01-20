@@ -20,4 +20,19 @@ describe Transaction do
       end
     end
   end
+
+  context 'operations' do
+    it 'entry?' do
+      account = create :account
+      transaction = create :transaction, operation: 'entry',
+        account_id: account.id
+      expect(transaction.entry?).to be_true
+    end
+    it 'deposit?' do
+      account = create :account
+      transaction = create :transaction, operation: 'deposit',
+        account_id: account.id
+      expect(transaction.deposit?).to be_true
+    end
+  end
 end
