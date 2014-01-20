@@ -20,7 +20,7 @@ class Account < ActiveRecord::Base
   protected
 
   def check_total(value)
-    value.nil? || self.total < value
+    self.total < value
   end
 
   def check_quantity(value)

@@ -9,7 +9,9 @@ class Transaction < ActiveRecord::Base
     where(account_id: account.id)
   }
 
-  validate :check_quantity
+  validate :check_quantity, :unless => Proc.new { |transaction|
+    transaction.quantity.nil? || transaction.quantity.blank?
+  }
 
   def check_quantity
     if entry?
