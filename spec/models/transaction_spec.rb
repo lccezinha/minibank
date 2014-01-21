@@ -43,38 +43,31 @@ describe Transaction do
     end
   end
 
-  context 'account_destiny_id' do
+  context 'transfers' do
+    let(:user) { create :user }
+    let(:user_two) { create :user }
+
+    let(:account) { create :account, user_id: user.id }
+    let(:account_two) { create :account, user_id: user_two.id }
+
     it 'when transaction is a deposit or a entry, account_destiny_id need be nil' do
       transaction = build :transaction, operation: 'entry', quantity: 100
       expect(transaction.account_destiny_id).to be_nil
     end
-    it 'validate presence of account_destiny_id for a transfers operation' do
-      user = create :user
-      user_two = create :user
-
-      account = create :account, user_id: user.id
-      account_two = create :account, user_id: user_two.id
-
+    it 'when transaction is a transfer need account_destiny_id' do
       transaction = create :transaction, operation: 'transfer', quantity: 100,
         account_destiny_id: account_two.id , account_id: account.id
       transaction.should validate_presence_of(:account_destiny_id)
     end
+
+    it 'account_id and account_destiny_id can not be equal' do
+      user = create :user
+      account = create :account, user_id: user.id
+      transaction = build :transaction, operation: 'transfer', quantity: 100,
+        account_destiny_id: account.id , account_id: account.id
+      expect(transaction).not_to be_valid
+    end
+
   end
-
-  # context 'transfer' do
-  #   context 'account_destiny_id must be a existent and valid account' do
-  #     let(:user) { create :user }
-  #     let(:account) { create :account, user_id: user.id }
-
-  #     let(:user_two) { create :user }
-  #     let(:account_two) { create :account, user_id: user_two.id }
-
-  #     it 'fail for invalid account_destiny_id' do
-  #       transaction = create :transaction, account_id: account.id, quantity: 100,
-  #         account_destiny_id: 10, operation: 'transfer'
-  #       expect(transaction).not_to be_valid
-  #     end
-  #   end
-  # end
 
 end

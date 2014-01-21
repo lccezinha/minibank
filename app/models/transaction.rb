@@ -12,9 +12,9 @@ class Transaction < ActiveRecord::Base
     transaction.transfer?
   }
 
-  # validate :check_valid_account_destiny_id, :if => Proc.new { |transaction|
-  #   transaction.transfer?
-  # }
+  validate :check_account_destiny_id, :if => Proc.new { |transaction|
+    transaction.transfer?
+  }
 
   scope :by_period, ->(start_date, end_date, account) {
     where("date(created_at) BETWEEN ? AND ?", start_date, end_date).
@@ -29,8 +29,8 @@ class Transaction < ActiveRecord::Base
     end
   end
 
-  def check_valid_account_destiny_id
-    Account.find account_destiny_id
+  def check_account_destiny_id
+    errors.add(:account_destiny_id, 'Conta destino não pode ser a conta de origem') if account_id.eql?(account_destiny_id)
   end
 
   def transfer?
