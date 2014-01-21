@@ -11,6 +11,11 @@ describe User do
         'venturalu@hotmail.com .br', 'zaelzabalbino@hotmail.co,']
     end
 
+    it do
+      user = create :user
+      expect(user.cpf).to match /\A\d{11}\z/
+    end
+
     context 'presence' do
       [:name, :cpf, :password, :email].each do |field|
         it { should validate_presence_of field  }

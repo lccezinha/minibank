@@ -22,6 +22,9 @@ ptBR:
       models:
         transaction:
           attributes:
+            account_destiny_id:
+              blank: Não pode ficar em branco p/ transferências
+              nil: Não pode ficar em branco p/ transferências
             quantity:
               blank: "Não pode ficar em branco."
               not_a_number: "Valor informado não é numérico."
