@@ -17,7 +17,6 @@ class Transaction < ActiveRecord::Base
   }
 
   after_create :apply_transfer, :if => Proc.new { |transaction|
-    p 'here.'
     transaction.transfer?
   }
 
@@ -36,13 +35,13 @@ class Transaction < ActiveRecord::Base
 
   def check_account_destiny_id
     errors.add(:account_destiny_id, 'Conta destino não pode ser a conta de origem') if account_id.eql?(account_destiny_id)
-    errors.add(:account_destiny_id, 'Conta destino não pode ser a conta de origem') if Account.find(account_destiny_id).nil?
   end
 
   def apply_transfer
-    self.account.minus(self.quantity)
-    # account_destiny = Account.find(self.account_destiny_id)
-    # account_destiny.plus(self.quantity)
+    # transaction.account.minus(transaction.quantity)
+    # p transaction.quantity
+    # account = Account.find(account_destiny_id)
+    # account.plus(transaction.quantity)
   end
 
   def transfer?

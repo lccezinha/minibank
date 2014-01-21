@@ -37,7 +37,7 @@ describe Transaction do
     it 'transfer?' do
       account = create :account
       account_two = create :account
-      transaction = create :transaction, operation: 'transfer',
+      transaction = build :transaction, operation: 'transfer',
         account_id: account.id, account_destiny_id: account_two.id
       expect(transaction.transfer?).to be_true
     end
@@ -55,9 +55,10 @@ describe Transaction do
       expect(transaction.account_destiny_id).to be_nil
     end
     it 'when transaction is a transfer need account_destiny_id' do
-      transaction = create :transaction, operation: 'transfer', quantity: 100,
-        account_destiny_id: account_two.id , account_id: account.id
-      transaction.should validate_presence_of(:account_destiny_id)
+      pending
+      # transaction = create :transaction, operation: 'transfer', quantity: 100,
+      #   account_destiny_id: account_two.id , account_id: account.id
+      # transaction.should validate_presence_of(:account_destiny_id)
     end
 
     it 'account_id and account_destiny_id can not be equal' do
@@ -83,13 +84,19 @@ describe Transaction do
       expect(transaction).not_to be_valid
     end
 
-    # it 'transfer from account A to B' do
-    #   transaction = create :transaction, operation: 'transfer', quantity: 50,
-    #     account_destiny_id: account_two.id , account_id: account.id
-    #   expect {
-    #     transaction.save
-    #   }.to change(account, :total).by(-50.0)
-    # end
+    context 'transfer from account A to B' do
+      it 'should discount from A' do
+        pending
+      end
+
+      it 'should add to B' do
+        pending
+      end
+    end
+
+    context 'applying taxes' do
+      pending
+    end
 
   end
 end
