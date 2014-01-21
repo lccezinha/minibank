@@ -68,6 +68,32 @@ describe Transaction do
       expect(transaction).not_to be_valid
     end
 
-  end
+    it 'account_destiny_id need exist' do
+      user = create :user
+      account = create :account, user_id: user.id
+      transaction = build :transaction, operation: 'transfer', quantity: 100,
+        account_destiny_id: account_two.id , account_id: account.id
+      expect(transaction).to be_valid
+    end
 
+    it 'transfer quantity must be greater_than 0' do
+      Account.find account_two.id
+      transaction = build :transaction, operation: 'transfer', quantity: 0,
+        account_destiny_id: account_two.id , account_id: account.id
+      expect(transaction).not_to be_valid
+    end
+
+    # it 'transfer from account A to B' do
+    #   transaction = create :transaction, operation: 'transfer', quantity: 50,
+    #     account_destiny_id: account_two.id , account_id: account.id
+    #   expect {
+    #     transaction.save
+    #   }.to change(account, :total).by(-50.0)
+    # end
+
+  end
 end
+
+# li = 'De segunda a sexta das 9 às 18 horas a taxa é 5 reais por transferência'
+# li = 'Fora desse horário a taxa é 7 reais'
+# li = 'Acima de 1000 reais há um adicional de 10 reais na taxa'
