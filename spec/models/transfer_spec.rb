@@ -45,23 +45,5 @@ describe Transfer do
         account_destiny_id: account_two.id , account_id: account.id
       expect(movimentation).not_to be_valid
     end
-
-    it 'account_destiny_id need exist' do
-      pending
-    end
-
-    context 'transfer from account A to B' do
-      it 'should discount from A' do
-        pending
-      end
-
-      it 'should add to B' do
-        pending
-      end
-    end
-
-    context 'applying taxes' do
-      pending
-    end
   end
 end

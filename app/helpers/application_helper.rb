@@ -17,8 +17,8 @@ module ApplicationHelper
     date.strftime "%d/%m/%y ás %H:%M"
   end
 
-  def operation_type(operation)
-    op, clazz = case operation
+  def operation_type(movimentation)
+    op, clazz = case movimentation.operation
     when 'entry' then ['Saque', 'info']
     when 'deposit' then ['Depósito', 'warning']
     end
@@ -26,9 +26,24 @@ module ApplicationHelper
       locals: { clazz: clazz, operation: op }
   end
 
+  def transfer_type(transfer, current_user)
+    values = if transfer.account_id.eql?(current_user.account.id)
+      ['Enviou por Transferência', 'inverse']
+    elsif transfer.account_destiny_id.eql?(current_user.account.id)
+      ['Recebeu por Transferência', 'success']
+    end
+    render partial: 'shared/operation_type',
+      locals: { clazz: values.last, operation: values.first }
+  end
+
   def table_movimentations(movimentations)
     render partial: 'shared/movimentations',
       locals: { movimentations: movimentations }
+  end
+
+  def table_transfers(transfers)
+    render partial: 'shared/transfers',
+      locals: { transfers: transfers }
   end
 
   def show_flash(flash)

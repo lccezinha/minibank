@@ -3,11 +3,15 @@ class TransfersController < ApplicationController
   before_action :load_account
 
   def new
-    @movimentation = @account.movimentations.build
-    respond_with @movimentation
+    @transfer = Transfer.new
+    respond_with @transfer
   end
 
   def create
+    @transfer = Transfer.new params[:transfer]
+    transfer_service = TransferService.new @transfer
+    flash[:messge] = 'Transferência efetuada.' if transfer_service.run
+    respond_with @transfer, location: root_path
   end
 
   private

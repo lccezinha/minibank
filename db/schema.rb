@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20140115121600) do
     t.string   "operation"
     t.decimal  "quantity",           precision: 8, scale: 2
     t.integer  "account_destiny_id"
-    t.integer  "integer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,6 @@
 h5 = show_title 'Transferência'
-= simple_form_for @movimentation, url: transfers_path do |f|
-  = f.input :operation, as: :hidden, input_html: { value: 'transfer' }
+= simple_form_for @transfer, url: transfers_path do |f|
+  = f.input :account_id, as: :hidden, input_html: { value: current_user.account.id }
   = f.error_notification
 
   .form-inputs

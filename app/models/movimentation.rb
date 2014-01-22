@@ -9,8 +9,15 @@ class Movimentation < ActiveRecord::Base
   }
 
   scope :by_period, ->(start_date, end_date, account) {
-    where("date(created_at) BETWEEN ? AND ?", start_date, end_date).
-    where(account_id: account.id)
+    where("date(created_at) BETWEEN ? AND ?", start_date, end_date).by_user(account)
+  }
+
+  scope :my_transfers, -> (account) {
+    where(operation: 'transfer').by_user(account)
+  }
+
+  scope :by_user, -> (account) {
+    where("account_id = :account OR account_destiny_id = :account", account: account.id)
   }
 
   def check_quantity
@@ -19,6 +26,10 @@ class Movimentation < ActiveRecord::Base
     elsif deposit?
       errors.add(:quantity, 'Valor inválido para depósito') unless account.plus(quantity)
     end
+  end
+
+  def transfer?
+    operation.eql?('transfer')
   end
 
   def entry?

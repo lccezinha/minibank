@@ -1,3 +1,4 @@
+h5 = 'Saques ou Depósitos'
 table.table-striped.large-table#table-transactions
   thead
     tr
@@ -7,6 +8,6 @@ table.table-striped.large-table#table-transactions
   tbody
     - movimentations.each do |movimentation|
       tr
-        td = operation_type movimentation.operation
+        td = operation_type movimentation
         td = show_date movimentation.created_at
         td = to_real movimentation.quantity
