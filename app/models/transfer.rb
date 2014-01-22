@@ -7,9 +7,9 @@ class Transfer
   validates_presence_of :quantity
   validates_numericality_of :quantity, greater_than: 0
 
-  validate :check_account_destiny_id
+  validate :valid_account_destiny_id
 
-  def check_account_destiny_id
+  def valid_account_destiny_id
     errors.add(:account_destiny_id, 'Conta destino não pode ser a conta de origem') if account_id.eql?(account_destiny_id)
   end
 
