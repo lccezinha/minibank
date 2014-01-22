@@ -41,9 +41,9 @@ describe Transfer do
     end
 
     it 'transfer quantity must be greater_than 0' do
-      transaction = build :transaction, operation: 'transfer', quantity: 0,
+      movimentation = build :movimentation, operation: 'transfer', quantity: 0,
         account_destiny_id: account_two.id , account_id: account.id
-      expect(transaction).not_to be_valid
+      expect(movimentation).not_to be_valid
     end
 
     it 'account_destiny_id need exist' do

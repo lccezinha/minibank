@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :transaction do |u|
+  factory :movimentation do |u|
     operation 'entry'
     quantity 50
   end

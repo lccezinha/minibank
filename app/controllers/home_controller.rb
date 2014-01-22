@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   layout 'home'
 
   def index
-    @transactions = current_user.account.transactions
-    respond_with @transactions
+    @movimentations = current_user.account.movimentations
+    respond_with @movimentations
   end
 end

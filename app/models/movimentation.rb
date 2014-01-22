@@ -1,4 +1,4 @@
-class Transaction < ActiveRecord::Base
+class Movimentation < ActiveRecord::Base
   belongs_to :account
 
   validates_presence_of :quantity

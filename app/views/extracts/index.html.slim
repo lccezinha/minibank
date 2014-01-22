@@ -1,5 +1,5 @@
-- if @transactions.any?
-  = table_transactions @transactions
+- if @movimentations.any?
+  = table_transactions @movimentations
 - else
   h5#empty-transactions.alert.alert-info
     = 'Você não efetuou nenhuma transação no período informado.'

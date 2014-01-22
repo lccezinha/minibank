@@ -3,14 +3,14 @@ class EntriesController < ApplicationController
   before_action :load_account
 
   def new
-    @transaction = @account.transactions.build
-    respond_with @transaction
+    @movimentation = @account.movimentations.build
+    respond_with @movimentation
   end
 
   def create
-    @transaction = @account.transactions.build transaction_params
-    flash[:notice] = 'Saque realizado com sucesso.' if @transaction.save
-    respond_with @transaction, location: root_path
+    @movimentation = @account.movimentations.build movimentation_params
+    flash[:notice] = 'Saque realizado com sucesso.' if @movimentation.save
+    respond_with @movimentation, location: root_path
   end
 
   private
@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
     @account = current_user.account
   end
 
-  def transaction_params
-    params.require(:transaction).permit(:quantity, :operation)
+  def movimentation_params
+    params.require(:movimentation).permit(:quantity, :operation)
   end
 end

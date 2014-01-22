@@ -26,9 +26,9 @@ module ApplicationHelper
       locals: { clazz: clazz, operation: op }
   end
 
-  def table_transactions(transactions)
-    render partial: 'shared/transactions',
-      locals: { transactions: transactions }
+  def table_movimentations(movimentations)
+    render partial: 'shared/movimentations',
+      locals: { movimentations: movimentations }
   end
 
   def show_flash(flash)

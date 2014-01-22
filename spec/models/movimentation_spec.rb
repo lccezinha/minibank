@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Transaction do
+describe Movimentation do
 
   context 'associations' do
     it { should belong_to :account }
   end
 
   it 'respond_to' do
-    expect(Transaction).to respond_to(:by_period)
+    expect(Movimentation).to respond_to(:by_period)
     should respond_to :check_quantity
   end
 
@@ -28,29 +28,29 @@ describe Transaction do
 
   it do
     account = create :account
-    transaction = build :transaction, operation: 'entry',
+    movimentation = build :movimentation, operation: 'entry',
       account_id: account.id
-    expect { transaction.save }.to change(Transaction, :count).by(1)
+    expect { movimentation.save }.to change(Movimentation, :count).by(1)
   end
 
   context 'operations' do
     it 'entry?' do
       account = create :account
-      transaction = create :transaction, operation: 'entry',
+      movimentation = create :movimentation, operation: 'entry',
         account_id: account.id
-      expect(transaction.entry?).to be_true
+      expect(movimentation.entry?).to be_true
     end
     it 'deposit?' do
       account = create :account
-      transaction = create :transaction, operation: 'deposit',
+      movimentation = create :movimentation, operation: 'deposit',
         account_id: account.id
-      expect(transaction.deposit?).to be_true
+      expect(movimentation.deposit?).to be_true
     end
   end
 
-  it 'when transaction is a deposit or a entry, account_destiny_id need be nil' do
-    transaction = build :transaction, operation: 'entry', quantity: 100
-    expect(transaction.account_destiny_id).to be_nil
+  it 'when movimentation is a deposit or a entry, account_destiny_id need be nil' do
+    movimentation = build :movimentation, operation: 'entry', quantity: 100
+    expect(movimentation.account_destiny_id).to be_nil
   end
 end
 

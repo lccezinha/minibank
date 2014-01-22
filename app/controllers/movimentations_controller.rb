@@ -1,10 +1,10 @@
-class TransactionsController < ApplicationController
+class MovimentationsController < ApplicationController
   layout 'home'
   before_action :load_account
 
   def new
-    @transaction = @account.transactions.build
-    respond_with @transaction
+    @movimentation = @account.movimentations.build
+    respond_with @movimentation
   end
 
   private

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Account do
   context 'associations' do
     it { should belong_to :user }
-    it { should have_many :transactions }
+    it { should have_many :movimentations }
   end
 
   it 'should start with 100,00' do
