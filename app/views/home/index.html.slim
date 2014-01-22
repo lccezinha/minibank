@@ -2,7 +2,7 @@
   - if @movimentations.any?
     h5 = 'Esse é um resumo de suas últimas atividades: '
     hr
-    = table_transactions @movimentations
+    = table_movimentations @movimentations
   - else
     h5#empty-transactions.alert.alert-info
       = 'Você não efetuou nenhuma transação no momento.'

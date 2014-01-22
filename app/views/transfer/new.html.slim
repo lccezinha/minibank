@@ -5,9 +5,9 @@ h5 = show_title 'Transferência'
 
   .form-inputs
     = f.input :quantity, label: 'Valor', class: 'fix-input', placeholder: 'Valor', \
-        required: true
+      required: true
     = f.input :account_destiny_id, placeholder: 'Conta p/ transferência', \
-        label: 'Conta destino', required: true
+      label: 'Conta destino', required: true
 
     = f.button :submit, 'Transferir', class: 'btn btn-info'
 

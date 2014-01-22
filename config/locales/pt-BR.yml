@@ -16,11 +16,11 @@ ptBR:
               blank: "Não pode ficar em branco"
   activerecord:
     attributes:
-      transaction:
+      movimentation:
         quantity: Valor
     errors:
       models:
-        transaction:
+        movimentation:
           attributes:
             account_destiny_id:
               blank: Não pode ficar em branco p/ transferências

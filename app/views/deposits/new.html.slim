@@ -1,6 +1,6 @@
 h5 = show_title 'Depósito'
-= form_for @transaction, url: deposits_path do |f|
-  = show_error_message @transaction
+= form_for @movimentation, url: deposits_path do |f|
+  = show_error_message @movimentation
   = f.hidden_field :operation, value: 'deposit'
   .input-prepend.input-append#quantity
     span.add-on = 'R$'
