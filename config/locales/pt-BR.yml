@@ -6,6 +6,11 @@ ptBR:
         end_date: Data Final
     errors:
       models:
+        transfer:
+          attributes:
+            quantity:
+              invalid: 'Valor Inválido'
+              blank: Não pode ficar em branco
         extract:
           attributes:
             start_date:

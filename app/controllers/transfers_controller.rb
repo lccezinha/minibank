@@ -9,8 +9,10 @@ class TransfersController < ApplicationController
 
   def create
     @transfer = Transfer.new params[:transfer]
-    transfer_service = TransferService.new @transfer
-    flash[:messge] = 'Transferência efetuada.' if transfer_service.run
+    if @transfer.valid?
+      transfer_service = TransferService.new @transfer
+      flash[:messge] = 'Transferência efetuada.' if transfer_service.run
+    end
     respond_with @transfer, location: root_path
   end
 
