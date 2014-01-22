@@ -47,6 +47,11 @@ describe Transaction do
       expect(transaction.deposit?).to be_true
     end
   end
+
+  it 'when transaction is a deposit or a entry, account_destiny_id need be nil' do
+    transaction = build :transaction, operation: 'entry', quantity: 100
+    expect(transaction.account_destiny_id).to be_nil
+  end
 end
 
 # li = 'De segunda a sexta das 9 às 18 horas a taxa é 5 reais por transferência'
