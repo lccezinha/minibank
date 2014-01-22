@@ -9,8 +9,10 @@ describe Transfer do
     let(:account_two) { create :account, user_id: user_two.id }
 
     it do
-      transfer = double('Transfer')
-      transfer.stub(:operation) { 'transfer' }
+      account = create :account
+      account_two = create :account
+      transfer = Transfer.new account_id: account.id,
+        account_destiny_id: account_two.id, quantity: 50
       expect(transfer.operation).to eql('transfer')
     end
 
@@ -33,18 +35,19 @@ describe Transfer do
       account_two = create :account
       transfer = Transfer.new account_id: account.id,
         account_destiny_id: account.id, quantity: 50
-      # p transfer
       expect(transfer).not_to be_valid
-    end
-
-    it 'account_destiny_id need exist' do
-      pending
+      expect(transfer.errors.keys).to include(:account_destiny_id)
+      expect(transfer.errors[:account_destiny_id]).to include('Conta destino não pode ser a conta de origem')
     end
 
     it 'transfer quantity must be greater_than 0' do
       transaction = build :transaction, operation: 'transfer', quantity: 0,
         account_destiny_id: account_two.id , account_id: account.id
       expect(transaction).not_to be_valid
+    end
+
+    it 'account_destiny_id need exist' do
+      pending
     end
 
     context 'transfer from account A to B' do
