@@ -22,8 +22,9 @@ describe TransferService do
       transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
         quantity: quantity
       transfer_service = TransferService.new transfer
-      expect { transfer_service.run }.to
-        change(account_two, :total).from(account_two.total).to(account_two.total + quantity)
+      expect {
+        transfer_service.run
+      }.to change(account_two, :total).by(quantity.to_d)
     end
 
     it 'account_id and account_destiny_id can not be equal' do

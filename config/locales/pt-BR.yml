@@ -8,6 +8,8 @@ ptBR:
       models:
         transfer:
           attributes:
+            account_destiny_id:
+              blank: Não pode ficar em branco
             quantity:
               invalid: 'Valor Inválido'
               blank: Não pode ficar em branco

@@ -3,8 +3,7 @@
     h5 = 'Esse é um resumo de suas últimas atividades: '
     hr
     = table_movimentations @movimentations
-  - elsif @transfers.any?
-    h5 = 'Esse é um resumo de suas últimas transferências: '
+  - if @transfers.any?
     hr
     = table_transfers @transfers
   - else
