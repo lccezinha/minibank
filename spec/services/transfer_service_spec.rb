@@ -18,13 +18,39 @@ describe TransferService do
       expect(Movimentation.last.operation).to eql('transfer')
     end
 
+    context 'fail when ' do
+      it 'account_id does not have enough money' do
+        account = create :account, total: BigDecimal.new(20)
+        transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
+          quantity: quantity
+        transfer_service = TransferService.new transfer
+        expect { transfer_service.run }.not_to change(Movimentation, :count).by(1)
+      end
+      context 'required fiels is not present' do
+        it 'account_destiny_id' do
+          transfer = Transfer.new account_id: account.id, account_destiny_id: '',
+            quantity: quantity
+          transfer_service = TransferService.new transfer
+          expect { transfer_service.run }.not_to change(Movimentation, :count).by(1)
+        end
+        it 'quantity' do
+          transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
+            quantity: ''
+          transfer_service = TransferService.new transfer
+          expect { transfer_service.run }.not_to change(Movimentation, :count).by(1)
+        end
+      end
+    end
+
     it 'add quantity for in destiny account' do
       transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
         quantity: quantity
       transfer_service = TransferService.new transfer
+      initial = account.total
+      final = initial - quantity
       expect {
         transfer_service.run
-      }.to change(account_two.reload, :total).by(quantity)
+      }.to change { account.total }.from(initial).to(final)
     end
 
     it 'account_id and account_destiny_id can not be equal' do
