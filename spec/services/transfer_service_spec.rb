@@ -74,5 +74,9 @@ describe TransferService do
       expect(transfer.errors[:account_destiny_id]).to include('Conta destino não pode ser a conta de origem')
     end
 
+    it 'apply taxes' do
+      pending
+    end
+
   end
 end
