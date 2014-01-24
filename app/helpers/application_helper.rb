@@ -1,6 +1,16 @@
 # coding: utf-8
 module ApplicationHelper
 
+  def movimentation(title, url, operation, resource)
+    render partial: 'shared/movimentation', locals: { title: title, url: url,
+      operation: operation, resource: resource }
+  end
+
+  def index(movimentations, transfers)
+    render partial: 'shared/index', locals: { movimentations: movimentations,
+      transfers: transfers }
+  end
+
   def show_menu
     render partial: 'shared/menu' if user_signed_in?
   end

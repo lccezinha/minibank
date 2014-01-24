@@ -1,12 +1,1 @@
-.info
-  - if @movimentations.any?
-    h5 = 'Esse é um resumo de suas últimas atividades: '
-    = table_movimentations @movimentations
-
-  - if @transfers.any?
-  hr
-    h5 = 'Esse é um resumo de suas últimas transferências: '
-    = table_transfers @transfers
-  - else
-    h5#empty-transactions.alert.alert-info
-      = 'Você não efetuou nenhuma transação no momento.'
+= index @movimentations, @transfers

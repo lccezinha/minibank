@@ -1,0 +1,9 @@
+h5 = show_title title
+= form_for resource, url: url do |f|
+  = show_error_message resource
+  = f.hidden_field :operation, value: operation
+  .input-prepend.input-append#quantity
+    span.add-on = 'R$'
+    = f.text_field :quantity, id: 'appendedPrependedInput', class: 'fix-input', \
+        placeholder: 'Valor'
+    = f.submit title, class: 'btn btn-info'

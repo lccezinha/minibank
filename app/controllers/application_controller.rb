@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def load_account
+    @account = current_user.account
+  end
+
   def configure_permitted_parameters
     [:sign_up, :sign_in, :account_update].each do |method|
       devise_parameter_sanitizer.for(method) << [:name, :cpf]

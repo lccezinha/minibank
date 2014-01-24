@@ -6,10 +6,4 @@ class MovimentationsController < ApplicationController
     @movimentation = @account.movimentations.build
     respond_with @movimentation
   end
-
-  private
-
-  def load_account
-    @account = current_user.account
-  end
 end

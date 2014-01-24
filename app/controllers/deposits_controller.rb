@@ -15,10 +15,6 @@ class DepositsController < ApplicationController
 
   private
 
-  def load_account
-    @account = current_user.account
-  end
-
   def movimentation_params
     params.require(:movimentation).permit(:quantity, :operation)
   end
