@@ -47,10 +47,21 @@ describe TransferService do
         quantity: quantity
       transfer_service = TransferService.new transfer
       initial = account.total
+      final = initial + quantity
+      expect {
+        transfer_service.run
+      }.to change { account_two.reload.total }.from(initial).to(final)
+    end
+
+    it 'discount quantity for in account' do
+      transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
+        quantity: quantity
+      transfer_service = TransferService.new transfer
+      initial = account.total
       final = initial - quantity
       expect {
         transfer_service.run
-      }.to change { account.total }.from(initial).to(final)
+      }.to change { account.reload.total }.from(initial).to(final)
     end
 
     it 'account_id and account_destiny_id can not be equal' do
