@@ -21,6 +21,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'rspec-mocks'
   gem 'factory_girl_rails'
 end
 

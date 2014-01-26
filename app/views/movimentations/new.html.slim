@@ -1,13 +1,13 @@
 h5 = show_title 'Transferência'
-= simple_form_for @transfer, url: transfers_path do |f|
-  = f.input :account_id, as: :hidden, input_html: { value: current_user.account.id }
+= simple_form_for @movimentation, url: transfers_path do |f|
+  = f.input :operation, as: :hidden, input_html: { value: 'transfer' }
   = f.error_notification
 
   .form-inputs
     = f.input :quantity, label: 'Valor', class: 'fix-input', placeholder: 'Valor', \
-      required: true
+        required: true
     = f.input :account_destiny_id, placeholder: 'Conta p/ transferência', \
-      label: 'Conta destino', required: true
+        label: 'Conta destino', required: true
 
     = f.button :submit, 'Transferir', class: 'btn btn-info'
 

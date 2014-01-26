@@ -2,7 +2,7 @@ Bank::Application.routes.draw do
   devise_for :users
 
   resources :users
-  resources :transactions, only: [:new]
+  resources :movimentations, only: [:new]
   resources :extracts, only: [:new, :index]
   resources :entries, only: [:new, :create]
   resources :deposits, only: [:new, :create]

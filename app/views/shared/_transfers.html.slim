@@ -1,0 +1,15 @@
+h5 = 'Transferências'
+table.table-striped.large-table#table-transactions
+  thead
+    tr
+      th Ação
+      th Para Conta
+      th Data
+      th Valor
+  tbody
+    - transfers.each do |transfer|
+      tr
+        td = transfer_type transfer, current_user
+        td = transfer.account_destiny_id
+        td = show_date transfer.created_at
+        td = to_real transfer.quantity

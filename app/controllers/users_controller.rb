@@ -18,13 +18,8 @@ class UsersController < ApplicationController
 
   private
 
-  def load_user
-    @user = User.find params[:id]
-  end
-
   def user_params
     params.require(:user).permit(:name, :email, :cpf, :password,
       :password_confirmation)
   end
-
 end

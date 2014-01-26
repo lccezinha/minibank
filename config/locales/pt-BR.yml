@@ -6,6 +6,13 @@ ptBR:
         end_date: Data Final
     errors:
       models:
+        transfer:
+          attributes:
+            account_destiny_id:
+              blank: Não pode ficar em branco
+            quantity:
+              invalid: 'Valor Inválido'
+              blank: Não pode ficar em branco
         extract:
           attributes:
             start_date:
@@ -16,12 +23,15 @@ ptBR:
               blank: "Não pode ficar em branco"
   activerecord:
     attributes:
-      transaction:
+      movimentation:
         quantity: Valor
     errors:
       models:
-        transaction:
+        movimentation:
           attributes:
+            account_destiny_id:
+              blank: Não pode ficar em branco p/ transferências
+              nil: Não pode ficar em branco p/ transferências
             quantity:
               blank: "Não pode ficar em branco."
               not_a_number: "Valor informado não é numérico."

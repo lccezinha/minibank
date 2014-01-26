@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Account do
   context 'associations' do
     it { should belong_to :user }
-    it { should have_many :transactions }
+    it { should have_many :movimentations }
   end
 
   it 'should start with 100,00' do
@@ -38,22 +38,18 @@ describe Account do
       expect { account.plus(deposit) }.to change(account, :total).by(deposit)
     end
 
+    it 'when try to deposit <= 0' do
+      user = create :user
+      account = create :account, user_id: user.id
+      deposit = 0
+      expect(account.plus(deposit)).to be_false
+    end
+
     it 'when try to entry more than total' do
       user = create :user
       account = create :account, user_id: user.id
       entry = 110
-      expect {
-        account.minus(entry)
-      }.to raise_error(InsuficientMoney, 'Saldo insuficiente.')
-    end
-
-    it 'when try to deposit <= 0' do
-      user = create :user
-      account = create :account, user_id: user.id
-      entry = 0
-      expect {
-        account.plus(entry)
-      }.to raise_error(InsuficientMoney, 'Valor inválido para depósito.')
+      expect(account.minus(entry)).to be_false
     end
 
     it 'when entry is done' do

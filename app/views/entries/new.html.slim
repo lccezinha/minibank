@@ -1,9 +1,1 @@
-h5 = show_title 'Saque'
-= form_for @transaction, url: entries_path do |f|
-  = show_error_message @transaction
-  = f.hidden_field :operation, value: 'entry'
-  .input-prepend.input-append#quantity
-    span.add-on = 'R$'
-    = f.text_field :quantity, id: 'appendedPrependedInput', class: 'fix-input', \
-        placeholder: 'Valor'
-    = f.submit 'Sacar', class: 'btn btn-info'
+=  movimentation 'Saque', deposits_path, 'entry', @movimentation
