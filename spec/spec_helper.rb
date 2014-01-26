@@ -40,3 +40,16 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def tax_by_date(date_time, quantity)
+  tax = if date_time.to_date.sunday? || date_time.to_date.saturday?
+    7
+  else
+    if date_time.beginning_of_hour.hour.in?(9..18)
+      5
+    else
+      7
+    end
+  end
+  return (quantity > 100) ? (tax + 10) : tax
+end

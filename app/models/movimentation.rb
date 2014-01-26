@@ -4,8 +4,8 @@ class Movimentation < ActiveRecord::Base
   validates_presence_of :quantity
   validates_numericality_of :quantity, greater_than: 0
 
-  validate :check_quantity, :unless => Proc.new { |transaction|
-    transaction.quantity.nil? || transaction.quantity.blank?
+  validate :check_quantity, :unless => Proc.new { |movimentation|
+    movimentation.quantity.nil? || movimentation.quantity.blank?
   }
 
   scope :by_period, ->(start_date, end_date, account) {

@@ -10,6 +10,41 @@ describe TransferService do
 
     let(:quantity) { BigDecimal.new(50) }
 
+    context 'tax value' do
+      it do
+        week_day_comercial_hour = DateTime.new(2014, 01, 24, 10, 00, 00)
+        expect(tax_by_date(week_day_comercial_hour, quantity)).to eql(TransferService::TAXES[:business_hour])
+      end
+
+      it do
+        week_day_off_comercial_hour = DateTime.new(2014, 01, 25, 10, 00, 00)
+        expect(tax_by_date(week_day_off_comercial_hour, quantity)).to eql(TransferService::TAXES[:off_business_hour])
+      end
+
+      it do
+        weekend = DateTime.new(2014, 01, 24, 20, 00, 00)
+        expect(tax_by_date(weekend, quantity)).to eql(TransferService::TAXES[:weekend])
+      end
+
+      context 'when quantity > 1000 add more 10 in tax' do
+        let(:quantity) { 1500 }
+        it do
+          week_day_comercial_hour = DateTime.new(2014, 01, 24, 10, 00, 00)
+          expect(tax_by_date(week_day_comercial_hour, quantity)).to eql(TransferService::TAXES[:business_hour] + 10)
+        end
+
+        it do
+          week_day_off_comercial_hour = DateTime.new(2014, 01, 25, 10, 00, 00)
+          expect(tax_by_date(week_day_off_comercial_hour, quantity)).to eql(TransferService::TAXES[:off_business_hour] + 10)
+        end
+
+        it do
+          weekend = DateTime.new(2014, 01, 24, 20, 00, 00)
+          expect(tax_by_date(weekend, quantity)).to eql(TransferService::TAXES[:weekend] + 10)
+        end
+      end
+    end
+
     it 'create one Movimentation with operation: transfer' do
       transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
         quantity: quantity
@@ -46,8 +81,10 @@ describe TransferService do
       transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
         quantity: quantity
       transfer_service = TransferService.new transfer
+
       initial = account.total
       final = initial + quantity
+
       expect {
         transfer_service.run
       }.to change { account_two.reload.total }.from(initial).to(final)
@@ -57,8 +94,11 @@ describe TransferService do
       transfer = Transfer.new account_id: account.id, account_destiny_id: account_two.id,
         quantity: quantity
       transfer_service = TransferService.new transfer
+
       initial = account.total
-      final = initial - quantity
+      tax = tax_by_date(DateTime.now, quantity)
+      final = initial - (quantity + tax)
+
       expect {
         transfer_service.run
       }.to change { account.reload.total }.from(initial).to(final)
@@ -73,10 +113,5 @@ describe TransferService do
       expect(transfer.errors.keys).to include(:account_destiny_id)
       expect(transfer.errors[:account_destiny_id]).to include('Conta destino não pode ser a conta de origem')
     end
-
-    it 'apply taxes' do
-      pending
-    end
-
   end
 end
