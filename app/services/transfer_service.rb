@@ -44,7 +44,6 @@ class TransferService
     end
 
     final_tax = (movimentation.quantity >= 1000) ? (tax + 10) : tax
-    p ['final_tax', final_tax]
     @from.minus final_tax
   end
 
