@@ -22,4 +22,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :cpf, :password,
       :password_confirmation)
   end
+
+  def load_user
+    @user = current_user
+  end
 end
