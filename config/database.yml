@@ -3,6 +3,16 @@ development:
   encoding: unicode
   database: bank_development
   pool: 5
-  # username: <%= ENV['PG_USERNAME'] %>
-  # password: <%= ENV['PG_PASSWORD'] %>
+  username: postgres
+  password: postgres
   host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: bank_test
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+
