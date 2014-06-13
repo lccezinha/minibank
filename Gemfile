@@ -23,7 +23,9 @@ group :test do
   gem 'shoulda-matchers'
   gem 'rspec-mocks'
   gem 'factory_girl_rails'
-end
+   end
 
-gem 'capistrano',  '~> 3.1'
-gem 'capistrano-rails', '~> 1.1'
+group :development do
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+end
