@@ -28,6 +28,7 @@ group :test do
 group :development do
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'mina'
 end
 
 group :production do
