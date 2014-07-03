@@ -31,7 +31,7 @@ group :development do
   gem 'mina'
 end
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
   gem 'unicorn'
   gem 'thin'
